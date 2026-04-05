@@ -68,11 +68,11 @@ export default function PlaceForm({ place, mode }: { place?: any; mode: 'create'
       };
 
       if (mode === 'create') {
-        const { error } = await supabase.from('places').insert(payload);
+        const { error } = await supabase.from('places').insert(payload as any);
         if (error) throw error;
         toast.success('Газар амжилттай нэмэгдлээ!');
       } else {
-        const { error } = await supabase.from('places').update(payload).eq('id', place.id);
+        const { error } = await supabase.from('places').update(payload as any).eq('id', place.id);
         if (error) throw error;
         toast.success('Мэдээлэл шинэчлэгдлээ!');
       }
